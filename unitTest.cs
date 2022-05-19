@@ -12,7 +12,7 @@ namespace MoodAnalyzer
 
     public class MoodAnalysisException : Exception
     {
-        public MoodAnalysisException(string message) : base(message)
+        public MoodAnalysisException(String message) : base(message)
         {
 
         }
@@ -30,9 +30,9 @@ namespace MoodAnalyzer
                 String value = match.Value;
                 Assert.AreEqual(value, "Happy");
             }
-            catch (Exception ex)
+            catch (MoodAnalysisException e )
             {
-                Console.WriteLine("invalid Input");  
+                Console.WriteLine("user defined Exception "+ e);  
             }
         }
         [TestMethod]
