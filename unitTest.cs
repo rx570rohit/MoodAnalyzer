@@ -12,7 +12,7 @@ namespace MoodAnalyzer
 
     public class MoodAnalysisException : Exception
     {
-        public MoodAnalysisException(string message) : base(message)
+        public MoodAnalysisException(String message) : base(message)
         {
 
         }
@@ -24,15 +24,15 @@ namespace MoodAnalyzer
         {
             try
             {
-                MoodAnalyzer Mood = new MoodAnalyzer(Console.ReadLine());
+                MoodAnalyzer Mood = new MoodAnalyzer("I am Happy ");
                 Regex regex = new Regex(@"Happy");
                 Match match = regex.Match(Mood.analyseMood());
                 String value = match.Value;
                 Assert.AreEqual(value, "Happy");
             }
-            catch (Exception ex)
+            catch (MoodAnalysisException e )
             {
-                Console.WriteLine("invalid Input");  
+                Console.WriteLine("user defined Exception "+ e);  
             }
         }
         [TestMethod]
@@ -40,18 +40,34 @@ namespace MoodAnalyzer
         {
             try
             {
-                MoodAnalyzer Mood = new MoodAnalyzer(Console.ReadLine());
-                Regex regex = new Regex(@"any");
+                MoodAnalyzer Mood = new MoodAnalyzer("I am sad");
+                Regex regex = new Regex(@"sad");
                 Match match = regex.Match(Mood.analyseMood());
                 String value = match.Value;
-                Assert.AreEqual(value, "any");
+                Assert.AreEqual(value, "sad");
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Invalid input");
             }
         }
-        public static void Main(String[] arg)
+        public void TC1_3()
+        {
+            try
+            {
+                MoodAnalyzer Mood = new MoodAnalyzer("");
+                Regex regex = new Regex("");
+                Match match = regex.Match(Mood.analyseMood());
+                String value = match.Value;
+                Assert.AreEqual(value, "");
+            }
+            catch (MoodAnalysisException e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+
+           public static void Main(String[] arg)
         {
             unitTest un1 = new unitTest();
             un1.TC1_1();
