@@ -4,21 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace MoodAnalyzer
 {
-    class MoodAnalyzer
+
+
+
+    class Moodanalyzer
     {
         String msg;
-        public MoodAnalyzer() 
+        public Moodanalyzer() 
         { }
-        public MoodAnalyzer(String msg)
+        public Moodanalyzer(String msg)
         {
             this.msg = msg;
         }
 
         public String analyseMood()
         {
+
+
             Regex regex1 = new Regex(@"Happy");
             Regex regex2 = new Regex(@"sad");
             Regex regex3 = new Regex("");
